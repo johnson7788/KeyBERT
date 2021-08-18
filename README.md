@@ -8,8 +8,7 @@
 
 # KeyBERT
 
-KeyBERT is a minimal and easy-to-use keyword extraction technique that leverages BERT embeddings to
-create keywords and keyphrases that are most similar to a document. 
+KeyBERT是一种最小的、易于使用的关键词提取技术，它利用BERT嵌入来创建与文件最相似的关键词和关键短语。
 
 Corresponding medium post can be found [here](https://towardsdatascience.com/keyword-extraction-with-bert-724efca412ea).
 
@@ -34,25 +33,21 @@ Although there are already many methods available for keyword generation
 (e.g., 
 [Rake](https://github.com/aneesha/RAKE), 
 [YAKE!](https://github.com/LIAAD/yake), TF-IDF, etc.) 
-I wanted to create a very basic, but powerful method for extracting keywords and keyphrases. 
-This is where **KeyBERT** comes in! Which uses BERT-embeddings and simple cosine similarity
-to find the sub-phrases in a document that are the most similar to the document itself.
+我想创建一个非常基本的，但强大的方法来提取关键词和关键词。
+这就是**KeyBERT**的用武之地! 它使用BERT嵌入和简单的余弦相似性来寻找文档中与文档本身最相似的子词。
 
-First, document embeddings are extracted with BERT to get a document-level representation. 
-Then, word embeddings are extracted for N-gram words/phrases. Finally, we use cosine similarity 
-to find the words/phrases that are the most similar to the document. The most similar words could 
-then be identified as the words that best describe the entire document.  
+首先，用BERT提取文档嵌入以获得文档级的表示。
+然后，为N-gram单词/短语提取单词嵌入。最后，我们使用余弦相似度来找到与文档最相似的词/短语。然后，最相似的词可以被确定为最能描述整个文档的词。 
 
-KeyBERT is by no means unique and is created as a quick and easy method
-for creating keywords and keyphrases. Although there are many great 
-papers and solutions out there that use BERT-embeddings 
+KeyBERT绝不是唯一的，它是作为一种快速和简单的方法来创建关键词和关键短语。虽然有许多优秀的论文和解决方案，使用BERT-embeddings
+
 (e.g., 
 [1](https://github.com/pranav-ust/BERT-keyphrase-extraction),
 [2](https://github.com/ibatra/BERT-Keyword-Extractor),
 [3](https://www.preprints.org/manuscript/201908.0073/download/final_file),
-), I could not find a BERT-based solution that did not have to be trained from scratch and
-could be used for beginners (**correct me if I'm wrong!**).
-Thus, the goal was a `pip install keybert` and at most 3 lines of code in usage.   
+), 
+我找不到一个基于BERT的解决方案，不需要从头开始训练，而且可以用于初学者（**如果我错了，请纠正我！**）。
+因此，目标是 "pip install keybert "和最多3行代码的使用。
 
 <a name="gettingstarted"/></a>
 ## 2. Getting Started
@@ -66,7 +61,7 @@ Installation can be done using [pypi](https://pypi.org/project/keybert/):
 pip install keybert
 ```
 
-You may want to install more depending on the transformers and language backends that you will be using. The possible installations are:
+你可能想安装更多，这取决于你将使用的transformer和语言后端。可能的安装是。
 
 ```
 pip install keybert[flair]
@@ -75,7 +70,7 @@ pip install keybert[spacy]
 pip install keybert[use]
 ```
 
-To install all backends:
+要安装所有后端：
 
 ```
 pip install keybert[all]
@@ -84,7 +79,7 @@ pip install keybert[all]
 <a name="usage"/></a>
 ###  2.2. Usage
 
-The most minimal example can be seen below for the extraction of keywords:
+最简单的例子可以在下面看到提取关键词的情况。
 ```python
 from keybert import KeyBERT
 
@@ -115,8 +110,7 @@ You can set `keyphrase_ngram_range` to set the length of the resulting keywords/
  ('mapping', 0.3700)]
 ```
 
-To extract keyphrases, simply set `keyphrase_ngram_range` to (1, 2) or higher depending on the number 
-of words you would like in the resulting keyphrases: 
+要提取关键词，只需将`keyphrase_ngram_range`设置为(1, 2)或更高，这取决于你希望得到的关键词中的词数。
 
 ```python
 >>> kw_model.extract_keywords(doc, keyphrase_ngram_range=(1, 2), stop_words=None)
